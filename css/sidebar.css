@@ -1,0 +1,145 @@
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: var(--surface);
+  border-right: 1px solid var(--line);
+  padding: 30px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.brand {
+  font: 800 1.3rem "Plus Jakarta Sans", sans-serif;
+  letter-spacing: -0.08em;
+  text-decoration: none;
+  color: var(--text);
+  padding: 0 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 29px;
+  height: 29px;
+  background: linear-gradient(135deg, #8476ff, #a495f8);
+  border-radius: 9px;
+  color: white;
+}
+
+.nav-links {
+  display: grid;
+  gap: 5px;
+  margin-top: 48px;
+}
+
+.nav-link {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 11px 13px;
+  border-radius: 11px;
+  font-weight: 700;
+  font-size: 0.86rem;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  transition: 0.2s;
+}
+
+.nav-link > span {
+  font-size: 1.12rem;
+  width: 17px;
+  text-align: center;
+}
+
+.nav-link b {
+  margin-left: auto;
+  background: var(--soft);
+  font-size: 0.67rem;
+  border-radius: 8px;
+  padding: 3px 7px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--violet);
+  background: rgba(108, 92, 231, 0.08);
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+}
+
+.upgrade-card {
+  display: grid;
+  grid-template-columns: 25px 1fr;
+  gap: 4px;
+  background: linear-gradient(135deg, #f0edff, #e8f7ff);
+  color: #49416f;
+  padding: 13px;
+  border-radius: 14px;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 13px;
+}
+
+.upgrade-card span {
+  grid-row: span 2;
+  color: var(--violet);
+  font-size: 1.2rem;
+}
+
+.upgrade-card strong {
+  font-size: 0.78rem;
+}
+
+.upgrade-card small {
+  font-size: 0.64rem;
+  color: #817aa1;
+}
+
+.profile-card {
+  background: transparent;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 9px;
+  text-align: left;
+  color: var(--text);
+  padding: 5px;
+}
+
+.avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #ffb987, #ec7c94);
+  color: white;
+  font-size: 0.68rem;
+  font-weight: bold;
+}
+
+.profile-card strong,
+.profile-card small {
+  display: block;
+  font-size: 0.73rem;
+}
+
+.profile-card small {
+  color: var(--muted);
+  font-size: 0.62rem;
+  margin-top: 2px;
+}
+
+.dots {
+  margin-left: auto;
+  color: var(--muted);
+}
