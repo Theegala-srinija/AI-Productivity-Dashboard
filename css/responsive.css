@@ -1,0 +1,149 @@
+@media (max-width: 1100px) {
+  .hero-grid {
+    grid-template-columns: 1.7fr 1fr;
+  }
+
+  .time-card {
+    display: none;
+  }
+
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .workspace-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .expense-panel {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 780px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.25s;
+  }
+
+  .sidebar.open {
+    transform: none;
+    box-shadow: 10px 0 40px rgba(0, 0, 0, 0.13);
+  }
+
+  .main-content {
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+  }
+
+  .menu-button {
+    display: block;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    width: 38px;
+    height: 38px;
+  }
+
+  .topbar {
+    gap: 10px;
+  }
+
+  .page-intro h1 {
+    font-size: 1.18rem;
+  }
+
+  .header-actions .search {
+    display: none;
+  }
+
+  .hero-grid,
+  .content-grid,
+  .workspace-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .weather-card {
+    min-height: 170px;
+  }
+
+  .expense-panel {
+    grid-column: auto;
+  }
+
+  .right-column {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .pomodoro,
+  .habit-panel {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .main-content {
+    padding: 16px;
+  }
+
+  .topbar {
+    align-items: flex-start;
+  }
+
+  .page-intro p {
+    display: none;
+  }
+
+  .header-actions {
+    gap: 5px;
+  }
+
+  .hero-grid {
+    gap: 12px;
+  }
+
+  .welcome-card {
+    min-height: 210px;
+    padding: 23px;
+  }
+
+  .orbital {
+    right: -54px;
+  }
+
+  .stats-row {
+    gap: 9px;
+  }
+
+  .stat-card {
+    padding: 11px;
+    gap: 7px;
+  }
+
+  .stat-card strong {
+    font-size: 1rem;
+  }
+
+  .stat-icon {
+    width: 29px;
+    height: 29px;
+  }
+
+  .trend {
+    display: none;
+  }
+
+  .right-column {
+    grid-template-columns: 1fr;
+  }
+
+  .panel {
+    padding: 17px;
+  }
+
+  .workspace-grid {
+    margin-top: 12px;
+  }
+}

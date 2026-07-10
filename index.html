@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#6c5ce7" />
+    <title>FlowState — AI Productivity Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <div class="app-shell" id="appShell">
+      <aside class="sidebar" id="sidebar">
+        <a href="#overview" class="brand">
+          <span class="brand-mark">✦</span>
+          <span>flowstate</span>
+        </a>
+
+        <nav class="nav-links">
+          <a class="nav-link active" href="#overview"><span>▦</span>Overview</a>
+          <a class="nav-link" href="#tasks"><span>✓</span>My tasks <b id="taskCount">0</b></a>
+          <a class="nav-link" href="#calendar"><span>□</span>Calendar</a>
+          <a class="nav-link" href="#notes"><span>▤</span>Notes</a>
+          <a class="nav-link" href="#finances"><span>◔</span>Finances</a>
+          <a class="nav-link" href="#habits"><span>♧</span>Habits</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <button class="upgrade-card" id="focusMode">
+            <span>✦</span>
+            <strong>Focus Mode</strong>
+            <small>Eliminate distractions</small>
+          </button>
+
+          <button class="profile-card">
+            <span class="avatar">SR</span>
+            <span>
+              <strong>Srini</strong>
+              <small>Level 12 • 78%</small>
+            </span>
+            <span class="dots">•••</span>
+          </button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <button class="menu-button" id="menuButton">☰</button>
+
+          <div class="page-intro">
+            <p id="greeting">Good morning, Srini</p>
+            <h1>Make today count. <span>✦</span></h1>
+          </div>
+
+          <div class="header-actions">
+            <label class="search">
+              <span>⌕</span>
+              <input id="globalSearch" placeholder="Search anything..." />
+            </label>
+            <button class="icon-button" id="themeToggle">☾</button>
+            <button class="icon-button notification" id="notificationButton">♧<i></i></button>
+          </div>
+        </header>
+
+        <section class="hero-grid" id="overview">
+          <article class="welcome-card glass reveal">
+            <div>
+              <span class="eyebrow">FRIDAY, JULY 10</span>
+              <h2>Small steps.<br /><em>Big energy.</em></h2>
+              <p>You've already made today meaningful. Keep the momentum going.</p>
+              <button class="primary-btn" id="addTaskTop">+ Add a task</button>
+            </div>
+
+            <div class="orbital">
+              <div class="orbit orbit-one"></div>
+              <div class="orbit orbit-two"></div>
+              <div class="planet">✦</div>
+              <span class="spark s1">✦</span>
+              <span class="spark s2">•</span>
+              <span class="spark s3">✦</span>
+            </div>
+          </article>
+
+          <article class="weather-card glass reveal">
+            <div class="weather-top">
+              <span class="weather-icon" id="weatherIcon">☀</span>
+              <button id="refreshWeather" class="ghost-icon">↻</button>
+            </div>
+            <strong id="temperature">28°</strong>
+            <p id="weatherDescription">Clear skies</p>
+            <small id="weatherLocation">Your location</small>
+          </article>
+
+          <article class="time-card glass reveal">
+            <span class="eyebrow">YOUR LOCAL TIME</span>
+            <strong id="liveClock">10:24</strong>
+            <p id="liveDate">Friday, July 10</p>
+            <div class="timezone-dot"><i></i>Asia/Kolkata</div>
+          </article>
+        </section>
+
+        <section class="stats-row reveal">
+          <article class="stat-card">
+            <span class="stat-icon violet">✓</span>
+            <div><small>Tasks done</small><strong id="doneStat">0 <em>/ 6</em></strong></div>
+            <span class="trend up">↗ 12%</span>
+          </article>
+
+          <article class="stat-card">
+            <span class="stat-icon orange">◔</span>
+            <div><small>Focus time</small><strong id="focusStat">0h 00m</strong></div>
+            <span class="trend up">↗ 8%</span>
+          </article>
+
+          <article class="stat-card">
+            <span class="stat-icon blue">♧</span>
+            <div><small>Habit streak</small><strong id="streakStat">0 <em>days</em></strong></div>
+            <span class="trend up">↗ 20%</span>
+          </article>
+
+          <article class="stat-card">
+            <span class="stat-icon pink">◉</span>
+            <div><small>Monthly spend</small><strong id="spendStat">₹0</strong></div>
+            <span class="trend down">↘ 6%</span>
+          </article>
+        </section>
+
+        <section class="content-grid">
+          <div class="left-column">
+            <article class="panel task-panel reveal" id="tasks">
+              <div class="panel-head">
+                <div>
+                  <span class="eyebrow">TODAY'S PRIORITIES</span>
+                  <h3>Keep moving forward</h3>
+                </div>
+                <button class="text-button" id="clearDone">Clear completed</button>
+              </div>
+
+              <div class="progress-line"><span id="taskProgress"></span></div>
+              <div id="taskList" class="task-list"></div>
+              <button class="add-row" id="addTask">＋ Add another task</button>
+            </article>
+
+            <article class="panel chart-panel reveal">
+              <div class="panel-head">
+                <div>
+                  <span class="eyebrow">WEEKLY FOCUS</span>
+                  <h3>Your productive rhythm</h3>
+                </div>
+                <select id="chartRange">
+                  <option>This week</option>
+                  <option>Last week</option>
+                </select>
+              </div>
+
+              <div class="chart-wrap">
+                <div class="chart-labels">
+                  <span>8h</span><span>6h</span><span>4h</span><span>2h</span><span>0h</span>
+                </div>
+                <div class="chart" id="focusChart"></div>
+              </div>
+
+              <div class="chart-days">
+                <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span>
+                <span>Fri</span><span>Sat</span><span>Sun</span>
+              </div>
+            </article>
+          </div>
+
+          <div class="right-column">
+            <article class="panel pomodoro reveal">
+              <div class="panel-head">
+                <div>
+                  <span class="eyebrow">FOCUS SESSION</span>
+                  <h3>Pomodoro timer</h3>
+                </div>
+                <button class="ghost-icon" id="resetTimer">↺</button>
+              </div>
+
+              <div class="timer-ring">
+                <svg viewBox="0 0 120 120">
+                  <circle cx="60" cy="60" r="52"></circle>
+                  <circle class="timer-progress" id="timerProgress" cx="60" cy="60" r="52"></circle>
+                </svg>
+
+                <div>
+                  <strong id="timerDisplay">25:00</strong>
+                  <small id="timerStatus">Ready to focus</small>
+                </div>
+              </div>
+
+              <div class="timer-actions">
+                <button id="timerStart" class="primary-btn">Start focus</button>
+                <button id="timerMode" class="secondary-btn">Break</button>
+              </div>
+            </article>
+
+            <article class="panel habit-panel reveal" id="habits">
+              <div class="panel-head">
+                <div>
+                  <span class="eyebrow">HABIT PULSE</span>
+                  <h3>Show up for yourself</h3>
+                </div>
+                <span class="fire">🔥 <b id="habitStreak">0</b></span>
+              </div>
+
+              <div id="habitList"></div>
+              <button class="add-row" id="addHabit">＋ Add habit</button>
+            </article>
+          </div>
+        </section>
+
+        <section class="workspace-grid">
+          <article class="panel notes-panel reveal" id="notes">
+            <div class="panel-head">
+              <div>
+                <span class="eyebrow">QUICK NOTES</span>
+                <h3>Capture your ideas</h3>
+              </div>
+              <button class="text-button" id="newNote">+ New</button>
+            </div>
+            <div id="notesList" class="notes-list"></div>
+          </article>
+
+          <article class="panel calendar-panel reveal" id="calendar">
+            <div class="panel-head">
+              <div>
+                <span class="eyebrow">JULY 2026</span>
+                <h3>Calendar</h3>
+              </div>
+              <div>
+                <button class="ghost-icon" id="prevMonth">‹</button>
+                <button class="ghost-icon" id="nextMonth">›</button>
+              </div>
+            </div>
+
+            <div class="calendar-weekdays">
+              <span>S</span><span>M</span><span>T</span><span>W</span>
+              <span>T</span><span>F</span><span>S</span>
+            </div>
+            <div class="calendar-days" id="calendarDays"></div>
+          </article>
+
+          <article class="panel expense-panel reveal" id="finances">
+            <div class="panel-head">
+              <div>
+                <span class="eyebrow">MONEY FLOW</span>
+                <h3>Expenses</h3>
+              </div>
+              <button class="text-button" id="addExpense">+ Add</button>
+            </div>
+
+            <div class="expense-total">
+              <small>THIS MONTH</small>
+              <strong id="expenseTotal">₹0</strong>
+              <span>on track ✓</span>
+            </div>
+
+            <div id="expenseList" class="expense-list"></div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="formModal">
+      <form method="dialog" id="modalForm">
+        <div class="modal-head">
+          <h3 id="modalTitle">Add task</h3>
+          <button type="button" class="ghost-icon modal-cancel">×</button>
+        </div>
+
+        <div id="modalFields"></div>
+
+        <div class="modal-actions">
+          <button type="button" class="secondary-btn modal-cancel">Cancel</button>
+          <button id="modalSubmit" class="primary-btn" value="default">Save</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast"></div>
+
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
